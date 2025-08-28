@@ -3,17 +3,14 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user
 from werkzeug.utils import secure_filename
 from werkzeug.exceptions import HTTPException
-from dotenv import load_dotenv
-from config import DATABASE_URI
 import os
 import re
 import logging
 from logging.handlers import RotatingFileHandler
-
-load_dotenv()
+from config import DATABASE_URI
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'cecc6799dcc70c096c8dfa228cb7d43e1839d1c0100c4ea254d5f0db023591b2')
+app.config['SECRET_KEY'] = 'cecc6799dcc70c096c8dfa228cb7d43e1839d1c0100c4ea254d5f0db023591b2'
 app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URI
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['UPLOAD_FOLDER'] = 'static/images'
