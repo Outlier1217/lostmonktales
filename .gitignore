@@ -1,0 +1,25 @@
+ 
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.env
+*.log
+
+# Database
+*.sqlite3
+
+# Upload folders
+static/images/*
+static/project_images/*
+!static/images/.gitkeep
+!static/project_images/.gitkeep
+
+# IDE and editor files
+.idea/
+.vscode/
+*.swp

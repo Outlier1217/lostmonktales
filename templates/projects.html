@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- Projects Header -->
+<section class="mb-12">
+    <div class="bg-navy-blue text-white py-12 rounded-lg shadow-lg mb-10">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl font-bold mb-4">Our Portfolio</h1>
+            <p class="text-xl max-w-3xl mx-auto">Explore our diverse range of architectural projects that showcase innovation, functionality, and aesthetic excellence.</p>
+        </div>
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        {% for category in categories %}
+        {% set project = projects|selectattr('category', 'equalto', category)|first %}
+        <div class="project-card group relative overflow-hidden rounded-lg">
+            <div class="sketch-border">
+                <img src="{{ project.image_url if project else '/static/images/fallback.jpg' }}" 
+                     alt="{{ category }}" 
+                     class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" 
+                     loading="lazy">
+            </div>
+            <div class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-4">
+                <h3 class="text-xl font-semibold text-white mb-2 text-center">{{ category }}</h3>
+                <p class="text-gray-300 text-sm mb-4 text-center">Click to view projects in this category</p>
+                <a href="/projects/{{ category }}" class="btn-primary">View Projects</a>
+            </div>
+            <h3 class="text-lg font-semibold p-4 text-center text-navy-blue bg-white">{{ category }}</h3>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- Process Section -->
+<section class="bg-light-pink py-12 rounded-lg shadow-inner mb-16">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-10 text-navy-blue">Our Design Process</h2>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <div class="text-center">
+                <div class="w-16 h-16 bg-orange rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span class="text-white text-2xl font-bold">1</span>
+                </div>
+                <h3 class="font-semibold text-navy-blue mb-2">Consultation</h3>
+                <p class="text-gray-700 text-sm">Understanding client needs and vision</p>
+            </div>
+            <div class="text-center">
+                <div class="w-16 h-16 bg-orange rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span class="text-white text-2xl font-bold">2</span>
+                </div>
+                <h3 class="font-semibold text-navy-blue mb-2">Concept Design</h3>
+                <p class="text-gray-700 text-sm">Creating initial design concepts</p>
+            </div>
+            <div class="text-center">
+                <div class="w-16 h-16 bg-orange rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span class="text-white text-2xl font-bold">3</span>
+                </div>
+                <h3 class="font-semibold text-navy-blue mb-2">Development</h3>
+                <p class="text-gray-700 text-sm">Refining and detailing the design</p>
+            </div>
+            <div class="text-center">
+                <div class="w-16 h-16 bg-orange rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span class="text-white text-2xl font-bold">4</span>
+                </div>
+                <h3 class="font-semibold text-navy-blue mb-2">Implementation</h3>
+                <p class="text-gray-700 text-sm">Bringing the design to life</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

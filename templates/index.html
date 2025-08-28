@@ -1,0 +1,141 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="relative mb-16">
+    <div class="bg-navy-blue text-white py-16 rounded-lg shadow-lg">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">Designing Spaces That Inspire</h1>
+            <p class="text-xl mb-8 max-w-3xl mx-auto">We create architectural solutions that blend functionality with aesthetic excellence, transforming visions into reality.</p>
+            <a href="/projects" class="btn-primary inline-block">Explore Our Work</a>
+        </div>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section class="mb-16">
+    <h2 class="text-3xl font-bold text-center mb-4 text-navy-blue">Our Services</h2>
+    <p class="text-center text-gray-600 mb-10 max-w-2xl mx-auto">Comprehensive architectural solutions tailored to your unique needs and vision</p>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Architecture -->
+        <div class="service-item bg-white p-6 rounded-lg shadow-md">
+            <div class="flex items-center mb-4">
+                <i class="fas fa-building text-orange text-2xl mr-3"></i>
+                <h3 class="text-xl font-semibold text-navy-blue">Architecture</h3>
+            </div>
+            <ul class="pl-2 space-y-2">
+                <li class="flex items-center">
+                    <i class="fas fa-chevron-right text-orange mr-2 text-xs"></i>
+                    <span class="text-gray-700">Architecture Design</span>
+                </li>
+                <li class="flex items-center">
+                    <i class="fas fa-chevron-right text-orange mr-2 text-xs"></i>
+                    <span class="text-gray-700">Interior Design</span>
+                </li>
+                <li class="flex items-center">
+                    <i class="fas fa-chevron-right text-orange mr-2 text-xs"></i>
+                    <span class="text-gray-700">Vastu Consultancy</span>
+                </li>
+            </ul>
+        </div>
+        
+        <!-- Art -->
+        <div class="service-item bg-white p-6 rounded-lg shadow-md">
+            <div class="flex items-center mb-4">
+                <i class="fas fa-palette text-orange text-2xl mr-3"></i>
+                <h3 class="text-xl font-semibold text-navy-blue">Art</h3>
+            </div>
+            <ul class="pl-2 space-y-2">
+                <li class="flex items-center">
+                    <i class="fas fa-chevron-right text-orange mr-2 text-xs"></i>
+                    <span class="text-gray-700">Pencil/Charcoal Portraits</span>
+                </li>
+                <li class="flex items-center">
+                    <i class="fas fa-chevron-right text-orange mr-2 text-xs"></i>
+                    <span class="text-gray-700">Oil/Acrylic Portraits</span>
+                </li>
+                <li class="flex items-center">
+                    <i class="fas fa-chevron-right text-orange mr-2 text-xs"></i>
+                    <span class="text-gray-700">Painting</span>
+                </li>
+                <li class="flex items-center">
+                    <i class="fas fa-chevron-right text-orange mr-2 text-xs"></i>
+                    <span class="text-gray-700">Store</span>
+                </li>
+            </ul>
+        </div>
+        
+        <!-- Literature -->
+        <div class="service-item bg-white p-6 rounded-lg shadow-md">
+            <div class="flex items-center mb-4">
+                <i class="fas fa-book-open text-orange text-2xl mr-3"></i>
+                <h3 class="text-xl font-semibold text-navy-blue">Literature</h3>
+            </div>
+            <ul class="pl-2 space-y-2">
+                <li class="flex items-center">
+                    <i class="fas fa-chevron-right text-orange mr-2 text-xs"></i>
+                    <span class="text-gray-700">Comparative Religious</span>
+                </li>
+                <li class="flex items-center">
+                    <i class="fas fa-chevron-right text-orange mr-2 text-xs"></i>
+                    <span class="text-gray-700">UGC NET Preparation</span>
+                </li>
+                <li class="flex items-center">
+                    <i class="fas fa-chevron-right text-orange mr-2 text-xs"></i>
+                    <span class="text-gray-700">NATA Preparation</span>
+                </li>
+                <li class="flex items-center">
+                    <i class="fas fa-chevron-right text-orange mr-2 text-xs"></i>
+                    <span class="text-gray-700">ART COURSES</span>
+                </li>
+                <li class="flex items-center">
+                    <i class="fas fa-chevron-right text-orange mr-2 text-xs"></i>
+                    <span class="text-gray-700">MATHS TEST(CBSE)</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- Blog Section -->
+<section class="mb-16">
+    <div class="flex justify-between items-center mb-8">
+        <h2 class="text-3xl font-bold text-navy-blue">Latest from our Blog</h2>
+        <a href="#" class="text-orange hover:underline flex items-center">
+            View all <i class="fas fa-arrow-right ml-2"></i>
+        </a>
+    </div>
+    
+    <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+            {% for blog in blogs %}
+            <div class="swiper-slide">
+                <div class="bg-white rounded-lg shadow-md overflow-hidden project-card h-full">
+                    <div class="sketch-border">
+                        <img src="{{ blog.image_url }}" alt="{{ blog.title }}" class="w-full h-48 object-cover" loading="lazy">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-3 text-navy-blue">{{ blog.title }}</h3>
+                        <p class="text-gray-600 mb-4">{{ blog.content[:150] }}...</p>
+                        <a href="#" class="text-orange hover:underline flex items-center">
+                            Read more <i class="fas fa-arrow-right ml-2 text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="swiper-pagination mt-4"></div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="bg-light-pink py-12 rounded-lg shadow-inner mb-16">
+    <div class="container mx-auto px-4 text-center">
+        <h2 class="text-3xl font-bold mb-4 text-navy-blue">Ready to Start Your Project?</h2>
+        <p class="text-gray-700 mb-8 max-w-2xl mx-auto">Let's collaborate to bring your architectural vision to life with innovative design solutions.</p>
+        <a href="#" class="btn-primary inline-block">Get in Touch</a>
+    </div>
+</section>
+{% endblock %}

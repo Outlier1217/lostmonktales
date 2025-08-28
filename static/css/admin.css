@@ -1,0 +1,14 @@
+/* Admin panel styles */
+form input, form textarea, form select {
+    transition: border-color 0.3s ease;
+}
+
+form input:focus, form textarea:focus, form select:focus {
+    border-color: #2563eb;
+}
+
+@media (max-width: 768px) {
+    form {
+        padding: 1rem;
+    }
+}

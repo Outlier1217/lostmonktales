@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- Project Detail Header -->
+<section class="mb-12">
+    <div class="bg-navy-blue text-white py-12 rounded-lg shadow-lg mb-10">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl font-bold mb-4">{{ project.category }}</h1>
+            <p class="text-xl max-w-3xl mx-auto">{{ project.description }}</p>
+        </div>
+    </div>
+
+    <!-- Image Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mb-10">
+        {% for img in project.images %}
+        <div class="project-card sketch-border cursor-pointer transition-all duration-300 hover:shadow-lg"
+             data-image="{{ img.image_url }}" 
+             data-name="{{ img.name }}" 
+             data-client="{{ img.client }}" 
+             data-location="{{ img.location }}" 
+             data-site-area="{{ img.site_area }}" 
+             data-built-up-area="{{ img.built_up_area }}" 
+             data-cost="{{ img.cost }}" 
+             data-duration="{{ img.duration }}" 
+             data-dwelling-units="{{ img.dwelling_units }}">
+            <img src="{{ img.image_url }}" alt="{{ img.name }}" class="w-full h-56 object-cover">
+            <div class="p-4 bg-white">
+                <h3 class="font-semibold text-navy-blue">{{ img.name }}</h3>
+                <p class="text-sm text-gray-600 mt-1">{{ img.location }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Project Detail Section -->
+    <div id="project-detail" class="hidden bg-white rounded-lg shadow-lg p-6 mb-10 project-card">
+        <div class="flex flex-col md:flex-row gap-8">
+            <div class="md:w-1/2">
+                <img id="detail-image" src="" alt="Selected Project" class="w-full h-80 object-cover rounded-lg sketch-border">
+                
+                <!-- Thumbnails -->
+                <div class="grid grid-cols-4 gap-2 mt-4">
+                    {% for img in project.images %}
+                    <img src="{{ img.image_url }}" alt="{{ img.name }}" 
+                         class="w-full h-16 object-cover rounded cursor-pointer thumbnail transition-opacity duration-200 hover:opacity-80"
+                         data-image="{{ img.image_url }}" 
+                         data-name="{{ img.name }}" 
+                         data-client="{{ img.client }}" 
+                         data-location="{{ img.location }}" 
+                         data-site-area="{{ img.site_area }}" 
+                         data-built-up-area="{{ img.built_up_area }}" 
+                         data-cost="{{ img.cost }}" 
+                         data-duration="{{ img.duration }}" 
+                         data-dwelling-units="{{ img.dwelling_units }}">
+                    {% endfor %}
+                </div>
+            </div>
+            
+            <div class="md:w-1/2">
+                <h3 id="detail-name" class="text-2xl font-bold mb-4 text-navy-blue"></h3>
+                
+                <h4 class="text-lg font-semibold mb-3 text-orange border-b pb-2">Project Overview</h4>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                    <div class="flex items-start">
+                        <i class="fas fa-user mt-1 mr-3 text-orange"></i>
+                        <div>
+                            <strong class="block text-sm text-gray-600">Client</strong>
+                            <span id="detail-client" class="text-navy-blue"></span>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <i class="fas fa-map-marker-alt mt-1 mr-3 text-orange"></i>
+                        <div>
+                            <strong class="block text-sm text-gray-600">Location</strong>
+                            <span id="detail-location" class="text-navy-blue"></span>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <i class="fas fa-ruler-combined mt-1 mr-3 text-orange"></i>
+                        <div>
+                            <strong class="block text-sm text-gray-600">Site Area</strong>
+                            <span id="detail-site-area" class="text-navy-blue"></span>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <i class="fas fa-building mt-1 mr-3 text-orange"></i>
+                        <div>
+                            <strong class="block text-sm text-gray-600">Built-up Area</strong>
+                            <span id="detail-built-up-area" class="text-navy-blue"></span>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <i class="fas fa-dollar-sign mt-1 mr-3 text-orange"></i>
+                        <div>
+                            <strong class="block text-sm text-gray-600">Cost</strong>
+                            <span id="detail-cost" class="text-navy-blue"></span>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <i class="fas fa-clock mt-1 mr-3 text-orange"></i>
+                        <div>
+                            <strong class="block text-sm text-gray-600">Duration</strong>
+                            <span id="detail-duration" class="text-navy-blue"></span>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <i class="fas fa-home mt-1 mr-3 text-orange"></i>
+                        <div>
+                            <strong class="block text-sm text-gray-600">Dwelling Units</strong>
+                            <span id="detail-dwelling-units" class="text-navy-blue"></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <h4 class="text-lg font-semibold mb-3 text-orange border-b pb-2">Project Description</h4>
+                <p class="text-gray-700">{{ project.description }}</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="/static/js/projects.js"></script>
+{% endblock %}

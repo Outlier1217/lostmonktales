@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="relative mb-16">
+    <div class="bg-navy-blue text-white py-16 rounded-lg shadow-lg">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">About LM Studio</h1>
+            <p class="text-xl mb-8 max-w-3xl mx-auto">Discover our passion for creating innovative architectural solutions that inspire and transform spaces.</p>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section class="mb-16">
+    <h2 class="text-3xl font-bold text-center mb-4 text-navy-blue">Our Story</h2>
+    <p class="text-center text-gray-600 mb-10 max-w-2xl mx-auto">Founded in 2010, LM Studio has been dedicated to crafting architectural designs that blend functionality, sustainability, and aesthetic excellence. Our journey began with a vision to redefine spaces, creating environments that inspire and elevate the human experience.</p>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <h3 class="text-xl font-semibold mb-4 text-navy-blue">Our Mission</h3>
+            <p class="text-gray-700">At LM Studio, we strive to create spaces that are not only visually stunning but also deeply functional and sustainable. We believe architecture should enhance lives, foster community, and respect the environment.</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <h3 class="text-xl font-semibold mb-4 text-navy-blue">Our Approach</h3>
+            <p class="text-gray-700">We combine innovative design with meticulous attention to detail, collaborating closely with clients to bring their visions to life. Our multidisciplinary team integrates art, architecture, and technology to deliver bespoke solutions.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Team Section -->
+<section class="mb-16">
+    <h2 class="text-3xl font-bold text-center mb-4 text-navy-blue">Our Team</h2>
+    <p class="text-center text-gray-600 mb-10 max-w-2xl mx-auto">Meet the creative minds behind LM Studio, dedicated to transforming your architectural dreams into reality.</p>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white p-6 rounded-lg shadow-md text-center">
+            <div class="sketch-border mb-4">
+                <img src="/static/images/team1.jpg" alt="Team Member" class="w-full h-48 object-cover rounded-md" loading="lazy">
+            </div>
+            <h3 class="text-xl font-semibold mb-2 text-navy-blue">Ar. Priya Sharma</h3>
+            <p class="text-gray-600">Lead Architect</p>
+            <p class="text-gray-600 mt-2">With over 15 years of experience, Priya specializes in sustainable design and urban planning.</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md text-center">
+            <div class="sketch-border mb-4">
+                <img src="/static/images/team2.jpg" alt="Team Member" class="w-full h-48 object-cover rounded-md" loading="lazy">
+            </div>
+            <h3 class="text-xl font-semibold mb-2 text-navy-blue">Ar. Vikram Singh</h3>
+            <p class="text-gray-600">Interior Designer</p>
+            <p class="text-gray-600 mt-2">Vikram brings creativity and precision to interior spaces, blending art with functionality.</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md text-center">
+            <div class="sketch-border mb-4">
+                <img src="/static/images/team3.jpg" alt="Team Member" class="w-full h-48 object-cover rounded-md" loading="lazy">
+            </div>
+            <h3 class="text-xl font-semibold mb-2 text-navy-blue">Dr. Ananya Roy</h3>
+            <p class="text-gray-600">Consultant</p>
+            <p class="text-gray-600 mt-2">Ananya provides expertise in Vastu and environmental design, ensuring holistic solutions.</p>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="bg-light-pink py-12 rounded-lg shadow-inner mb-16">
+    <div class="container mx-auto px-4 text-center">
+        <h2 class="text-3xl font-bold mb-4 text-navy-blue">Join Our Journey</h2>
+        <p class="text-gray-700 mb-8 max-w-2xl mx-auto">Partner with us to create spaces that inspire and endure. Let's build something extraordinary together.</p>
+        <a href="#" class="btn-primary inline-block">Get in Touch</a>
+    </div>
+</section>
+{% endblock %}

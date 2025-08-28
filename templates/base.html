@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LM Studio</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body class="bg-pencil-light font-sans">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="/static/images/logo.png" alt="Logo" class="h-12">
+                <!-- <span class="ml-2 text-xl font-bold text-navy-blue">ARCH STUDIO</span> -->
+            </div>
+            
+            <!-- Burger Icon for Mobile -->
+            <button id="burger-btn" class="md:hidden focus:outline-none text-navy-blue">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+            
+            <!-- Navigation Links -->
+            <ul id="nav-links" class="hidden md:flex md:space-x-8 font-medium">
+                <li><a href="/" class="text-navy-blue hover:text-orange transition-colors">Home</a></li>
+                <li><a href="/about" class="text-navy-blue hover:text-orange transition-colors">About Us</a></li>
+                <li><a href="/blog" class="text-navy-blue hover:text-orange transition-colors">Blog</a></li>
+                <li><a href="/store" class="text-navy-blue hover:text-orange transition-colors">Store</a></li>
+                <li><a href="/projects" class="text-navy-blue hover:text-orange transition-colors">Projects</a></li>
+                <li><a href="/contact" class="bg-orange text-white px-4 py-2 rounded-md hover:bg-navy-blue transition-colors">Contact</a></li>
+            </ul>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg px-4 py-6">
+            <ul class="space-y-4">
+                <li><a href="/" class="block text-navy-blue hover:text-orange transition-colors">Home</a></li>
+                <li><a href="#" class="block text-navy-blue hover:text-orange transition-colors">About Us</a></li>
+                <li><a href="#" class="block text-navy-blue hover:text-orange transition-colors">Blog</a></li>
+                <li><a href="#" class="block text-navy-blue hover:text-orange transition-colors">Store</a></li>
+                <li><a href="/projects" class="block text-navy-blue hover:text-orange transition-colors">Projects</a></li>
+                <li><a href="/admin/login" class="block bg-orange text-white px-4 py-2 rounded-md text-center hover:bg-navy-blue transition-colors">Login</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-6 rounded-md">
+                    {% for message in messages %}
+                        <p>{{ message }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-navy-blue text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 text-orange">About Us</h3>
+                    <p class="mb-4">Creating innovative architectural solutions that blend functionality with aesthetic excellence.</p>
+                    <div class="flex space-x-4">
+                        <a href="https://twitter.com" target="_blank" class="text-white hover:text-orange transition-colors">
+                            <i class="fab fa-twitter fa-lg"></i>
+                        </a>
+                        <a href="https://instagram.com" target="_blank" class="text-white hover:text-orange transition-colors">
+                            <i class="fab fa-instagram fa-lg"></i>
+                        </a>
+                        <a href="https://facebook.com" target="_blank" class="text-white hover:text-orange transition-colors">
+                            <i class="fab fa-facebook-f fa-lg"></i>
+                        </a>
+                        <a href="https://youtube.com" target="_blank" class="text-white hover:text-orange transition-colors">
+                            <i class="fab fa-youtube fa-lg"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4 text-orange">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="/" class="hover:text-orange transition-colors">Home</a></li>
+                        <li><a href="/projects" class="hover:text-orange transition-colors">Projects</a></li>
+                        <li><a href="#" class="hover:text-orange transition-colors">Services</a></li>
+                        <li><a href="#" class="hover:text-orange transition-colors">Blog</a></li>
+                        <li><a href="#" class="hover:text-orange transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4 text-orange">Contact Info</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-orange"></i>
+                            <span> 8122/6017, Block F, Sanjay Colony, Sector 23, Faridabad, Haryana 121005</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone mt-1 mr-3 text-orange"></i>
+                            <span>+91 88827 44327</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope mt-1 mr-3 text-orange"></i>
+                            <span>support@lmlibrary.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 pt-8 text-center">
+                <p>&copy; 2025 Architecture Studio. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script src="/static/js/slider.js"></script>
+    <script>
+        // Burger menu toggle
+        document.getElementById('burger-btn').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>

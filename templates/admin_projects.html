@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="mb-12">
+    <h2 class="text-3xl font-bold text-center mb-6">Manage Projects</h2>
+    <!-- Add Project Form -->
+    <form method="POST" enctype="multipart/form-data" class="bg-white rounded-lg shadow-md p-6 mb-8">
+        <h3 class="text-xl font-semibold mb-4">Add New Project</h3>
+        <div class="mb-4">
+            <label for="category" class="block text-gray-700">Category</label>
+            <select id="category" name="category" class="w-full border rounded-lg p-2" required>
+                {% for cat in categories %}
+                <option value="{{ cat }}">{{ cat }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-4">
+            <label for="name" class="block text-gray-700">Name</label>
+            <input type="text" id="name" name="name" class="w-full border rounded-lg p-2" required>
+        </div>
+        <div class="mb-4">
+            <label for="description" class="block text-gray-700">Description</label>
+            <textarea id="description" name="description" class="w-full border rounded-lg p-2" rows="5" required></textarea>
+        </div>
+        <div class="mb-4">
+            <label for="image" class="block text-gray-700">Image</label>
+            <input type="file" id="image" name="image" class="w-full" accept="image/*" required>
+        </div>
+        <div class="mb-4">
+            <label for="client" class="block text-gray-700">Client</label>
+            <input type="text" id="client" name="client" class="w-full border rounded-lg p-2">
+        </div>
+        <div class="mb-4">
+            <label for="location" class="block text-gray-700">Location</label>
+            <input type="text" id="location" name="location" class="w-full border rounded-lg p-2">
+        </div>
+        <div class="mb-4">
+            <label for="site_area" class="block text-gray-700">Site Area</label>
+            <input type="text" id="site_area" name="site_area" class="w-full border rounded-lg p-2">
+        </div>
+        <div class="mb-4">
+            <label for="built_up_area" class="block text-gray-700">Built-up Area</label>
+            <input type="text" id="built_up_area" name="built_up_area" class="w-full border rounded-lg p-2">
+        </div>
+        <div class="mb-4">
+            <label for="cost" class="block text-gray-700">Cost</label>
+            <input type="text" id="cost" name="cost" class="w-full border rounded-lg p-2">
+        </div>
+        <div class="mb-4">
+            <label for="duration" class="block text-gray-700">Duration</label>
+            <input type="text" id="duration" name="duration" class="w-full border rounded-lg p-2">
+        </div>
+        <div class="mb-4">
+            <label for="dwelling_units" class="block text-gray-700">Dwelling Units</label>
+            <input type="text" id="dwelling_units" name="dwelling_units" class="w-full border rounded-lg p-2">
+        </div>
+        <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700">Add Project</button>
+    </form>
+
+    <!-- Edit Project Form (if editing) -->
+    {% if project %}
+    <form method="POST" action="{{ url_for('edit_project', id=project.id) }}" enctype="multipart/form-data" class="bg-white rounded-lg shadow-md p-6 mb-8">
+        <h3 class="text-xl font-semibold mb-4">Edit Project</h3>
+        <div class="mb-4">
+            <label for="category" class="block text-gray-700">Category</label>
+            <select id="category" name="category" class="w-full border rounded-lg p-2" required>
+                {% for cat in categories %}
+                <option value="{{ cat }}" {% if cat == project.category %}selected{% endif %}>{{ cat }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-4">
+            <label for="name" class="block text-gray-700">Name</label>
+            <input type="text" id="name" name="name" value="{{ project.name }}" class="w-full border rounded-lg p-2" required>
+        </div>
+        <div class="mb-4">
+            <label for="description" class="block text-gray-700">Description</label>
+            <textarea id="description" name="description" class="w-full border rounded-lg p-2" rows="5" required>{{ project.description }}</textarea>
+        </div>
+        <div class="mb-4">
+            <label for="image" class="block text-gray-700">Image (optional)</label>
+            <input type="file" id="image" name="image" class="w-full" accept="image/*">
+        </div>
+        <div class="mb-4">
+            <label for="client" class="block text-gray-700">Client</label>
+            <input type="text" id="client" name="client" value="{{ project.client }}" class="w-full border rounded-lg p-2">
+        </div>
+        <div class="mb-4">
+            <label for="location" class="block text-gray-700">Location</label>
+            <input type="text" id="location" name="location" value="{{ project.location }}" class="w-full border rounded-lg p-2">
+        </div>
+        <div class="mb-4">
+            <label for="site_area" class="block text-gray-700">Site Area</label>
+            <input type="text" id="site_area" name="site_area" value="{{ project.site_area }}" class="w-full border rounded-lg p-2">
+        </div>
+        <div class="mb-4">
+            <label for="built_up_area" class="block text-gray-700">Built-up Area</label>
+            <input type="text" id="built_up_area" name="built_up_area" value="{{ project.built_up_area }}" class="w-full border rounded-lg p-2">
+        </div>
+        <div class="mb-4">
+            <label for="cost" class="block text-gray-700">Cost</label>
+            <input type="text" id="cost" name="cost" value="{{ project.cost }}" class="w-full border rounded-lg p-2">
+        </div>
+        <div class="mb-4">
+            <label for="duration" class="block text-gray-700">Duration</label>
+            <input type="text" id="duration" name="duration" value="{{ project.duration }}" class="w-full border rounded-lg p-2">
+        </div>
+        <div class="mb-4">
+            <label for="dwelling_units" class="block text-gray-700">Dwelling Units</label>
+            <input type="text" id="dwelling_units" name="dwelling_units" value="{{ project.dwelling_units }}" class="w-full border rounded-lg p-2">
+        </div>
+        <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700">Update Project</button>
+    </form>
+    {% endif %}
+
+    <!-- Project List -->
+    <h3 class="text-xl font-semibold mb-4">Existing Projects</h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {% for p in projects %}
+        <div class="bg-white rounded-lg shadow-md p-4 flex justify-between items-center">
+            <div>
+                <h4 class="text-lg font-semibold">{{ p.category }} - {{ p.name }}</h4>
+                <p class="text-gray-600">{{ p.description[:100] }}...</p>
+            </div>
+            <div class="space-x-2">
+                <a href="{{ url_for('edit_project', id=p.id) }}" class="text-blue-600 hover:underline">Edit</a>
+                <a href="{{ url_for('delete_project', id=p.id) }}" class="text-red-600 hover:underline" onclick="return confirm('Are you sure?')">Delete</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+<script src="/static/js/admin.js"></script>
+{% endblock %}

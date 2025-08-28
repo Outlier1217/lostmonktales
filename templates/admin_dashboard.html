@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="mb-12">
+    <h2 class="text-3xl font-bold text-center mb-6">Admin Dashboard</h2>
+    <div class="flex justify-center space-x-4">
+        <a href="/admin/blogs" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">Manage Blogs</a>
+        <a href="/admin/projects" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">Manage Projects</a>
+        <a href="/admin/logout" class="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700">Logout</a>
+    </div>
+</section>
+{% endblock %}

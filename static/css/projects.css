@@ -1,0 +1,47 @@
+/* Projects page specific styles */
+.project-card {
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.project-card img {
+    transition: transform 0.5s ease;
+}
+
+.project-card:hover img {
+    transform: scale(1.05);
+}
+
+.thumbnail {
+    transition: all 0.2s ease;
+}
+
+.thumbnail:hover {
+    opacity: 0.8;
+    transform: scale(1.05);
+}
+
+/* Detail section animations */
+#project-detail {
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive adjustments for project detail */
+@media (max-width: 768px) {
+    #project-detail .flex-col {
+        flex-direction: column;
+    }
+    
+    #project-detail .md\:w-1\/2 {
+        width: 100%;
+    }
+    
+    .thumbnail-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

@@ -1,0 +1,137 @@
+/* Custom color palette */
+:root {
+    --orange: #FF7F3E;
+    --light-pink: #FFF5F0;
+    --navy-blue: #1E2A47;
+    --pencil-light: #F9F7F2;
+    --pencil-dark: #2C3E50;
+}
+
+.bg-orange { background-color: var(--orange); }
+.text-orange { color: var(--orange); }
+.bg-navy-blue { background-color: var(--navy-blue); }
+.text-navy-blue { color: var(--navy-blue); }
+.bg-pencil-light { background-color: var(--pencil-light); }
+.text-pencil-dark { color: var(--pencil-dark); }
+.bg-light-pink { background-color: var(--light-pink); }
+
+/* Custom styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+}
+
+/* Navigation styles */
+nav ul li a {
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--orange);
+    transition: width 0.3s ease;
+}
+
+nav ul li a:hover:after {
+    width: 100%;
+}
+
+/* Swiper customization */
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-pagination-bullet-active {
+    background-color: var(--orange) !important;
+}
+
+/* Card hover effects */
+.project-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Service items */
+.service-item {
+    border-left: 3px solid var(--orange);
+    transition: all 0.3s ease;
+}
+
+.service-item:hover {
+    background-color: var(--light-pink);
+    transform: translateX(5px);
+}
+
+/* Button styles */
+.btn-primary {
+    background-color: var(--orange);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: var(--navy-blue);
+    transform: translateY(-2px);
+}
+
+/* Sketch effect for images */
+.sketch-border {
+    position: relative;
+}
+
+.sketch-border:after {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: -10px;
+    bottom: -10px;
+    border: 2px solid var(--orange);
+    opacity: 0.3;
+    z-index: -1;
+    border-radius: 4px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #mobile-menu {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .swiper-slide {
+        flex-direction: column;
+    }
+    
+    .service-item {
+        border-left: none;
+        border-bottom: 3px solid var(--orange);
+    }
+    
+    .service-item:hover {
+        transform: translateY(5px);
+    }
+}
