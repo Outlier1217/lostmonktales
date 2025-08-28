@@ -343,3 +343,7 @@ if __name__ == '__main__':
         db.create_all()
         app.logger.info("Database tables created")
     app.run(debug=True)
+else:
+    with app.app_context():
+        db.create_all()
+        app.logger.info("Database tables created")
